@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useSnapShot } from "valtio";
+import { useSnapshot } from "valtio";
 
 import state from "../store";
+import { CustomButton } from "../components";
 import {
   headContainerAnimation,
   headContentAnimation,
@@ -10,7 +11,7 @@ import {
 } from "../config/motion";
 
 const Home = () => {
-  const snap = useSnapShot(state);
+  const snap = useSnapshot(state);
 
   return (
     <AnimatePresence>
@@ -31,7 +32,7 @@ const Home = () => {
               </h1>
             </motion.div>
             <motion.div
-              {...headContainerAnimation}
+              {...headContentAnimation}
               className="flex flex-col gap-5"
             >
               <p className="max-w-md font-normal text-grey-600 text-base">
@@ -42,8 +43,8 @@ const Home = () => {
 
               <CustomButton
                 type="filled"
-                title="Customize It"
-                handleClick={() => (state.intro = false)}
+                title="Go Back"
+                handleClick={() => (state.intro = true)}
                 customStyles="w-fit px-4 py-2.5 font-bold text-sm"
               />
             </motion.div>
